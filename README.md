@@ -93,4 +93,5 @@ python manage.py  runserver
 ## Importar y exportar en postgres
 
 pg_dump -U reroes -W -h localhost base_clase2 > basename.sql
+
 psql -U reroes -W -h localhost base_clase2 < basename.sql   # import
