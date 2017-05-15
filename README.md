@@ -3,27 +3,35 @@
 ## Instalación de librerías en el sistemas operativo
 
 sudo apt-get update
+
 sudo apt-get install python-dev
+
 sudo apt-get install python-setuptools
 
 sudo apt-get install postgresql
+
 sudo apt-get install postgresql-server-dev-9.3
 
 ## Instalación de librerías de python en todo el SO
 
 sudo easy_install pip
+
 sudo pip install virtualenv
 
 ## Creación de entornos virtuales
 
 virtualenv /ruta/nombre_entorno
+
 source /ruta/nombre_entorno/bin/activate
+
 deactivate
 
 ## Instalación de librerías en un entornos (virtualenv)
 
 pip install psycopg2
+
 pip install django==1.8
+
 pip install ipython
  
 ## Creación de un proyecto en Django
@@ -47,12 +55,15 @@ pip install ipython
 ## Comandos adicionales uso de django
 
 Change your models (in models.py).
+
 Run python manage.py makemigrations to create migrations for those changes
+
 Run python manage.py migrate to apply those changes to the database.
 
 django-admin startproject proyecto1
 
 python manage.py startapp aplicacion1
+
 python manage.py sqlmigrate aplicacion1 0001  #solo muestra el sql
 
 
@@ -70,23 +81,37 @@ python manage.py sqlmigrate aplicacion1 0001  #solo muestra el sql
 ## Uso del comando inspectdb
 
 python manage.py inspectdb
+
 python manage.py  migrate
 
 ## Uso del comando inspectdb en un proyecto
 
 django-admin startproject escuela
+
 cd escuela/
+
 ls
+
 python manage.py startapp estudiantes
+
 ls
+
 python inspectdb > models.py
+
 ls
+
 python manage.py inspectdb > models.py
+
 ls
+
 python manage.py migrate
+
 python manage.py makemigrations estudiantes
+
 python manage.py migrate
+
 python manage.py createsuperuser
+
 python manage.py  runserver
 
 
