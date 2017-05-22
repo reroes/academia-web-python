@@ -1,0 +1,26 @@
+Uso de inspectdb
+
+1. django-admin.py startproject institucion
+
+2. configurar toda la base ....
+
+3. python manage.py inspectdb > mimodelo.py
+
+4. python manage.py startapp academico
+
+5. copiar el el modelado de la nueva aplicación desde inspectd
+
+6. agregar la app en el settings.py
+
+7. python manage.py makemigrations academico
+
+8. python manage.py migrate
+
+9. agregar las clases en el admin.py
+
+10. python manage.py createsuperuser
+
+11. python manage.py runserver (en el navegador http://127.0.0.1:8000/admin)
+
+
+
