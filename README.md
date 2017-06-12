@@ -120,3 +120,24 @@ python manage.py  runserver
 pg_dump -U reroes -W -h localhost base_clase2 > basename.sql
 
 psql -U reroes -W -h localhost base_clase2 < basename.sql   # import
+
+
+
+## Comandos GIT
+
+git clone
+
+git add 
+
+git commit -a -m"mensaje"
+
+git push
+
+git pull
+
+git branch -a # listo los brachs de mi repositorio
+
+git chekcout nombre-branch
+
+### aqui se puede agregar más archivo o modificar archivos
+git push -u origin nombre-branch # la primera vez olvidar
