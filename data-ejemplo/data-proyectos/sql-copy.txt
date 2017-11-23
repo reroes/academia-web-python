@@ -1,0 +1,73 @@
+
+drop table paralelo_estudiante;
+drop table paralelo;
+drop table periodo;
+drop table estudiante;
+drop table materia;
+
+
+CREATE TABLE estudiante(
+  id_estudiante SERIAL NOT NULL,
+  nombre character varying(50),
+  apellido character varying(50),
+  dob date,
+  email character varying(255),
+  cedula character varying(255),
+  CONSTRAINT estudiante_pkey PRIMARY KEY (id_estudiante)
+);
+
+
+CREATE TABLE materia(
+  id_materia SERIAL NOT NULL,
+  nombre character varying(50),
+  CONSTRAINT materia_pkey PRIMARY KEY (id_materia)
+);
+
+
+CREATE TABLE periodo(
+  id_periodo SERIAL NOT NULL,
+  nombre character varying(50),
+  CONSTRAINT periodo_pkey PRIMARY KEY (id_periodo)
+);
+
+CREATE TABLE paralelo(
+  id_paralelo SERIAL NOT NULL,
+  nombre character varying(50),
+  la_materia integer,
+  la_periodo integer,
+  CONSTRAINT paralelo_pkey PRIMARY KEY (id_paralelo),
+  CONSTRAINT materia_fkey FOREIGN KEY (la_materia)
+      REFERENCES materia (id_materia) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT periodo_fkey FOREIGN KEY (la_periodo)
+      REFERENCES periodo (id_periodo) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+
+CREATE TABLE paralelo_estudiante(
+  id_paralelo_estudiante integer NOT NULL,
+  la_paralelo integer,
+  la_estudiante integer,
+  CONSTRAINT paralelo_estudiante_pkey PRIMARY KEY (id_paralelo_estudiante),
+  CONSTRAINT paralelo_fkey FOREIGN KEY (la_paralelo)
+      REFERENCES paralelo(id_paralelo) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT estudiante_fkey FOREIGN KEY (la_estudiante)
+      REFERENCES estudiante(id_estudiante) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+
+\COPY persons(first_name,last_name,dob,email,la_provincia) FROM '/home/reroes/Documentos/AcademiasGP31_2016/proyectos_clase2/base/base1.csv' DELIMITER ',' CSV HEADER;
+
+ \COPY provincia(id, nombre) FROM '/home/reroes/Documentos/AcademiasGP31_2016/proyectos_clase2/base/base2.csv' DELIMITER ',' CSV HEADER;
+
+\COPY periodo(nombre) FROM '/home/reroes/Escritorio/data/periodos.csv' DELIMITER ',' CSV HEADER;
+
+\COPY materia(nombre) FROM '/home/reroes/Escritorio/data/materia.csv' DELIMITER ',' CSV HEADER;
+\COPY paralelo(nombre,la_materia,la_periodo) FROM '/home/reroes/Escritorio/data/paralelo.csv' DELIMITER ',' CSV HEADER;
+\COPY paralelo_estudiante(la_paralelo,la_estudiante) FROM '/home/reroes/Escritorio/data/paralelo_estudiante.csv' DELIMITER ',' CSV HEADER;
+
+
+
